@@ -60,3 +60,11 @@ execute "install-pip" do
   EOF
   not_if { ::File.exists?(pip_binary) }
 end
+
+node[:python][:pip].each do |act,pip_pkgs|
+  pip_pkgs.each do |pkg|
+		python_pip pkg do
+			action act
+		end
+	end
+end
