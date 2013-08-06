@@ -62,9 +62,11 @@ execute "install-pip" do
 end
 
 node[:python][:pip].each do |act,pip_pkgs|
-  pip_pkgs.each do |pkg|
-		python_pip pkg do
-			action act
-		end
+	if pip_pkgs do
+    pip_pkgs.each do |pkg|
+		  python_pip pkg do
+			  action act
+		  end
+	  end
 	end
 end
