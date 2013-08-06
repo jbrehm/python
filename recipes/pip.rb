@@ -62,7 +62,7 @@ execute "install-pip" do
 end
 
 node['python']['pip'].each do |act,pip_pkgs|
-	unless(pip_pkgs.nil?)
+	unless(pip_pkgs != 'nil')
     pip_pkgs.each do |pkg|
 		  python_pip pkg do
 			  action act.to_sym
